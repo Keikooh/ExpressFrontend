@@ -6,7 +6,7 @@ import MaterialFormScreen from '../screens/MaterialFormScreen'
 
 const Stack = createNativeStackNavigator()
 
-const AluminiumStackScreen = () => {
+const AluminiumStackScreen = () => { 
   return (
     <Stack.Navigator>
         <Stack.Screen name="Aluminium stock" component={AluminiumStockScreen}
