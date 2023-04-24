@@ -1,47 +1,47 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const ItemStyle = StyleSheet.create({
-	title: {
-		fontWeight: 'bold',
-		fontSize: 20,
-	},
-	itemContainer: {
-		backgroundColor: '#FFFFFF',
-		padding: 10,
-		marginVertical: 10,
-		borderRadius: 5,
-		height: 98,
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		shadowColor: '#000',
-		shadowOffset: {
-			width: 0,
-			height: 2,
-		},
-		shadowOpacity: 0.25,
-		shadowRadius: 2.84,
-		elevation: 5,
-	},
-	materialType: {
-		color: '#FFFFFF',
-		fontWeight: 'bold',
-		width: '100%',
-		borderRadius: 16,
-		fontSize: 10,
-		textAlign: 'center',
-	},
-	button: {
-		//height:35,
-		borderRadius: 10,
-		margin: 5,
-		width: '35%',
+  title: {
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  itemContainer: {
+    backgroundColor: "#FFFFFF",
+    padding: 10,
+    marginVertical: 10,
+    borderRadius: 5,
+    height: 98,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 2.84,
+    elevation: 5,
+  },
+  materialType: {
+    color: "#FFFFFF",
+    fontWeight: "bold",
+    width: "100%",
+    borderRadius: 16,
+    fontSize: 10,
+    textAlign: "center",
+  },
+  button: {
+    //height:35,
+    borderRadius: 10,
+    margin: 5,
+    width: "35%",
 
-		padding: 10,
-	},
-	buttonText: {
-		fontWeight: 'bold',
-		color: '#FFFFFF',
-		textAlign: 'center',
-		fontSize: 15,
-	},
+    padding: 10,
+  },
+  buttonText: {
+    fontWeight: "bold",
+    color: "#FFFFFF",
+    textAlign: "center",
+    fontSize: 15,
+  },
 });
