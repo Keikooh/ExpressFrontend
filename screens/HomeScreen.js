@@ -59,6 +59,16 @@ const HomeScreen = () => {
 	);
 };
 
+<<<<<<< HEAD
+const data = 
+  [
+    { x: 1, y: 3, label: "Aluminio" },
+    { x: 2, y: 7, label: "Cristal" }
+  ]
+
+
+export default HomeScreen
+=======
 const styles = StyleSheet.create({
 	title: {
 		fontWeight: 'bold',
@@ -81,3 +91,4 @@ const data = [
 ];
 
 export default HomeScreen;
+>>>>>>> 744519e2d93616d5f3da7a9988883d8f61d92c20
