@@ -11,12 +11,6 @@ const layout = ({children}) => {
   )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#EBEFF8',
-        padding: 20,
-        flex: 1
-    },
-})
+
 
 export default layout

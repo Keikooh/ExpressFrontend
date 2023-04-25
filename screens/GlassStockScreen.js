@@ -6,8 +6,6 @@ import Material_List from '../components/Material_List'
 import Layout from '../components/Layout'
 
 const GlassStockScreen = () => {
- 
-  
   return (
     <Layout>
       <Material_List type={'Vidrio'}/>

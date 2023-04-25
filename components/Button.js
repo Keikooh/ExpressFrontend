@@ -9,11 +9,6 @@ const Button = () => {
   )
 }
 
-const styles = StyleSheet.create({
-    btn:{
-        backgroundColor: 'blue',
-        top: 200
-    }
-})
+
 
 export default Button
