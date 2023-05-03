@@ -1,27 +1,29 @@
-import * as React from 'react';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
-const Checkmark = props => (
-	<Svg
-		xmlns='http://www.w3.org/2000/svg'
-		className='ionicon'
-		viewBox='0 0 512 512'
-		{...props}
-	>
-		<Path
-			fill='none'
-			stroke='currentColor'
-			strokeMiterlimit={10}
-			strokeWidth={32}
-			d='M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z'
-		/>
-		<Path
-			fill='none'
-			stroke='currentColor'
-			strokeLinecap='round'
-			strokeLinejoin='round'
-			strokeWidth={32}
-			d='M352 176 217.6 336 160 272'
-		/>
-	</Svg>
-);
-export default Checkmark;
+
+const CheckIcon = ({ color = '#000', size = 24 }) => {
+  return (
+    <View style={[styles.container, { width: size, height: size }]}>
+      <Svg viewBox="0 0 512 512" width={size} height={size}>
+        <Path
+          fill="none"
+          stroke={color}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="32"
+          d="M416 128L192 384l-96-96"
+        />
+      </Svg>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+export default CheckIcon;
