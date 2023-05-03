@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoadScreen from './screens/LoadScreen';
-import ApplicationTab from './Tabs/ApplicationTab';
+import ApplicationTab from './stacks/ApplicationTab';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
