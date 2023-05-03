@@ -27,6 +27,7 @@ const GlassStackScreen = () => {
 			<Stack.Screen
 				name='Agregar vidrio'
 				component={MaterialFormScreen}
+				initialParams={{ prevScreenName: 'GlassStock' }}
 				options={{
 					headerStyle: { backgroundColor: '#EBEFF8' },
 				}}

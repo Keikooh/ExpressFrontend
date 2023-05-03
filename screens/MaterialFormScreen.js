@@ -13,7 +13,7 @@ import { saveMaterial } from '../api';
 
 const MaterialFormScreen = ({route, navigation}) => {
 	const [material, setmaterial] = useState({
-		type: 'Vidrio',
+		type: route.params.prevScreenName === 'Aluminium stock' ? 'Aluminio' : 'Vidrio',
 		large: '',
 		width: '',
 		amount: '',
@@ -30,7 +30,7 @@ const MaterialFormScreen = ({route, navigation}) => {
 			.then(data => {
 				console.log(route.params);
 				route.params?.onSubmit?.();
-				//navigation.navigate(route.params);
+				navigation.navigate(route.params.prevScreenName);
 			})
 			.catch(error => {
 				console.error(error);
