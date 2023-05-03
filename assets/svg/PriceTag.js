@@ -1,16 +1,21 @@
-import * as React from 'react';
-import Svg, { Path } from 'react-native-svg';
-/* SVGR has dropped some elements not supported by react-native-svg: title */
-
-const PriceTag = props => (
-	<Svg
-		xmlns='http://www.w3.org/2000/svg'
-		className='ionicon'
-		viewBox='0 0 512 512'
-		{...props}
-	>
-		<Path d='M467 45.2A44.45 44.45 0 0 0 435.29 32H312.36a30.63 30.63 0 0 0-21.52 8.89L45.09 286.59a44.82 44.82 0 0 0 0 63.32l117 117a44.83 44.83 0 0 0 63.34 0l245.65-245.6A30.6 30.6 0 0 0 480 199.8v-123a44.24 44.24 0 0 0-13-31.6zM384 160a32 32 0 1 1 32-32 32 32 0 0 1-32 32z' />
-	</Svg>
-);
-
-export default PriceTag;
+import * as React from "react"
+import Svg, { Path } from "react-native-svg"
+const Pricetag = (props) => (
+  <Svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="ionicon"
+    viewBox="0 0 512 512"
+    {...props}
+  >
+    <Path
+      fill="none"
+      stroke='#212F5B'
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={32}
+      d="M435.25 48h-122.9a14.46 14.46 0 0 0-10.2 4.2L56.45 297.9a28.85 28.85 0 0 0 0 40.7l117 117a28.85 28.85 0 0 0 40.7 0L459.75 210a14.46 14.46 0 0 0 4.2-10.2v-123a28.66 28.66 0 0 0-28.7-28.8z"
+    />
+    <Path d="M384 160a32 32 0 1 1 32-32 32 32 0 0 1-32 32z" />
+  </Svg>
+)
+export default Pricetag

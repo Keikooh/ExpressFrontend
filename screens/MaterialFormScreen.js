@@ -11,7 +11,7 @@ import { Picker } from '@react-native-picker/picker';
 import Layout from '../components/Layout';
 import { saveMaterial } from '../api';
 
-const MaterialFormScreen = ({ navigation }) => {
+const MaterialFormScreen = ({route, navigation}) => {
 	const [material, setmaterial] = useState({
 		type: 'Vidrio',
 		large: '',
@@ -24,15 +24,16 @@ const MaterialFormScreen = ({ navigation }) => {
 
 	const handleChange = (property, value) =>
 		setmaterial({ ...material, [property]: value });
+
 	const handleSubmit = () => {
 		saveMaterial(material)
 			.then(data => {
-				console.log(data);
-				//navigation.navigate('HomeScreen');
+				console.log(route.params);
+				route.params?.onSubmit?.();
+				//navigation.navigate(route.params);
 			})
 			.catch(error => {
 				console.error(error);
-				// Aquí puedes agregar un mensaje de error para informar al usuario
 			});
 	};
 

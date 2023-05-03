@@ -17,7 +17,7 @@ const AluminiumStackScreen = () => {
 					headerTitle: '',
 					headerRight: () => (
 						<TouchableOpacity
-							onPress={() => navigation.navigate('Agregar aluminio')}
+						onPress={() => navigation.navigate('Agregar aluminio', { onSubmit: () => navigation.navigate('Aluminium stock') })}
 						>
 							<Text>Agregar</Text>
 						</TouchableOpacity>
@@ -27,6 +27,7 @@ const AluminiumStackScreen = () => {
 			<Stack.Screen
 				name='Agregar aluminio'
 				component={MaterialFormScreen}
+				initialParams={{ myProp: 'Agregar aluminio' }} 
 				options={{
 					headerStyle: { backgroundColor: '#EBEFF8' },
 				}}

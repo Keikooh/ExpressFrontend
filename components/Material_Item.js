@@ -4,7 +4,7 @@ import Dialog from 'react-native-dialog';
 
 // Importing svg components
 import Stock from '../assets/svg/Stock';
-import PriceTag from '../assets/svg/PriceTag';
+import Pricetag from '../assets/svg/Pricetag';
 
 // Importing styles
 import { ItemStyle } from '../assets/styles/ItemStyle';
@@ -14,6 +14,7 @@ const Material_Item = ({ material, handleDelete }) => {
 
 	return (
 		<View style={ItemStyle.itemContainer}>
+
 			<Dialog.Container visible={dialogVisibility}>
 				<Dialog.Title>Eliminar elemento</Dialog.Title>
 				<Dialog.Description>
@@ -25,7 +26,9 @@ const Material_Item = ({ material, handleDelete }) => {
 				/>
 				<Dialog.Button
 					label='Eliminar'
-					onPress={() => handleDelete(material._id)}
+					onPress={() =>{
+						handleDelete(material._id)
+					} }
 				/>
 			</Dialog.Container>
 
@@ -51,7 +54,7 @@ const Material_Item = ({ material, handleDelete }) => {
 						height={12}
 						style={{ marginRight: 5 }}
 					/>
-					<Text>{material.cost}</Text>
+					<Text>{material.amount}</Text>
 				</View>
 				<View
 					style={{
@@ -61,7 +64,13 @@ const Material_Item = ({ material, handleDelete }) => {
 						alignItems: 'center',
 					}}
 				>
-					<Text>{material.amount}</Text>
+					<Pricetag
+					fill='#212F5B'
+					stroke='#212F5B'
+					width={12}
+					height={12}
+					style={{ marginRight: 5 }}/>
+					<Text>{material.cost}</Text>
 				</View>
 			</View>
 
