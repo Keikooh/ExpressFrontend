@@ -13,9 +13,6 @@ const layout = ({ children }) => {
 	return <View style={styles.container}>{children}</View>;
 };
 
-<<<<<<< HEAD
-
-=======
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#EBEFF8',
@@ -23,6 +20,5 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 });
->>>>>>> 744519e2d93616d5f3da7a9988883d8f61d92c20
 
 export default layout;

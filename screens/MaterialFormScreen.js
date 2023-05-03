@@ -113,9 +113,6 @@ const MaterialFormScreen = ({route, navigation}) => {
 	);
 };
 
-<<<<<<< HEAD
-export default MaterialFormScreen
-=======
 const styles = StyleSheet.create({
 	input: {
 		marginTop: 10,
@@ -134,4 +131,3 @@ const styles = StyleSheet.create({
 });
 
 export default MaterialFormScreen;
->>>>>>> 744519e2d93616d5f3da7a9988883d8f61d92c20
