@@ -1,6 +1,5 @@
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
-import Logo from '../assets/svg/Logo';
 import Layout from '../components/Layout';
 
 const LoadScreen = ({ navigation }) => {
@@ -10,8 +9,11 @@ const LoadScreen = ({ navigation }) => {
 
 	return (
 		<Layout>
-			<View style={{ alignSelf: 'center', marginVertical: '70%' }}>
-				<Logo />
+			<View style={{ flex: 1, justifyContent: 'center' }}>
+				<Image
+					source={require('../assets/images/LogoExpress.jpg')}
+					style={{ width: 200 , height: 250, alignSelf: 'center' }}
+				/>
 			</View>
 		</Layout>
 	);

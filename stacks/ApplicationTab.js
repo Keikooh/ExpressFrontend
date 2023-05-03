@@ -3,8 +3,8 @@ import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import HomeScreen from '../screens/HomeScreen';
-import AluminiumStackScreen from '../stacks/AluminiumStackScreen';
-import GlassStackScreen from '../stacks/GlassStackScreen';
+import AluminiumStackScreen from './AluminiumStackScreen';
+import GlassStackScreen from './GlassStackScreen';
 
 const Tab = createMaterialTopTabNavigator();
 

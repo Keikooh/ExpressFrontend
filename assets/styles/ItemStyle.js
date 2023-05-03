@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const ItemStyle = StyleSheet.create({
 	title: {
 		fontWeight: 'bold',
-		fontSize: 20,
+		fontSize: 16,
 	},
 	itemContainer: {
 		backgroundColor: '#FFFFFF',
@@ -22,6 +22,14 @@ export const ItemStyle = StyleSheet.create({
 		shadowRadius: 2.84,
 		elevation: 5,
 	},
+	materialDetails:{
+	},
+	controls:{
+		width:'65%',
+		flexDirection: 'row', 
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
 	materialType: {
 		color: '#FFFFFF',
 		fontWeight: 'bold',
@@ -34,7 +42,7 @@ export const ItemStyle = StyleSheet.create({
 		//height:35,
 		borderRadius: 10,
 		margin: 5,
-		width: '35%',
+		width: '40%',
 
 		padding: 10,
 	},
