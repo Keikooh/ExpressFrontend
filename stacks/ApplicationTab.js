@@ -17,7 +17,7 @@ const ApplicationTab = () => {
 			}}
 		>
 			<Tab.Screen name='Inicio' component={HomeScreen} />
-			<Tab.Screen name='Cristal' component={GlassStackScreen} />
+			<Tab.Screen name='Vidrio' component={GlassStackScreen} />
 			<Tab.Screen name='Aluminio' component={AluminiumStackScreen} />
 		</Tab.Navigator>
 	);

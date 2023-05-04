@@ -2,7 +2,7 @@ import { View, Text, FlatList, RefreshControl, Image } from 'react-native';
 import React, { useState, useEffect } from 'react';
 
 import Material_Item from './Material_Item';
-import { getMaterial, deleteMaterial } from '../api.js';
+import { getMaterials, deleteMaterial } from '../api.js';
 
 const Material_List = ({ type }) => {
 	const [material, setmaterial] = useState([]);
@@ -10,7 +10,7 @@ const Material_List = ({ type }) => {
 	const [emptyData, setemptyData] = useState(false);
 
 	const loadMaterial = async () => {
-		const data = await getMaterial();
+		const data = await getMaterials();
 		setmaterial(data);
 		//setemptyData(data.length === 0 ? true : false)
 		console.log(data.length);

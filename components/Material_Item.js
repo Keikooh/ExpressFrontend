@@ -2,6 +2,8 @@ import { View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React, { useState } from 'react';
 import Dialog from 'react-native-dialog';
 
+import { useNavigation } from '@react-navigation/native';
+
 // Importing svg components
 import Stock from '../assets/svg/Stock';
 import Pricetag from '../assets/svg/Pricetag';
@@ -11,6 +13,8 @@ import Trash from '../assets/svg/Trash';
 import { ItemStyle } from '../assets/styles/ItemStyle';
 
 const Material_Item = ({ material, handleDelete }) => {
+
+	const navigation = useNavigation();
 	const [dialogVisibility, setdialogVisibility] = useState(false);
 	const materialCodeName = `${material.type == 'Aluminio' ? 'ALM' : 'VDR'}${material.color.slice(0,4).toUpperCase()}${material.width},${material.large}`;
 
@@ -88,6 +92,9 @@ const Material_Item = ({ material, handleDelete }) => {
 				</TouchableOpacity>
 
 				<TouchableOpacity
+					onPress={() => navigation.navigate(
+						material.type === 'Aluminio' ? 'Agregar aluminio' : 'Agregar vidrio', {id: material._id}
+					)}
 					style={[ItemStyle.button, { backgroundColor: '#414D9C' }]}
 				>
 					<Text style={ItemStyle.buttonText}>editar</Text>

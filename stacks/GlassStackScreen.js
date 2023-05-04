@@ -14,7 +14,7 @@ const GlassStackScreen = () => {
 				component={GlassStockScreen}
 				options={({ navigation }) => ({
 					headerStyle: { backgroundColor: '#EBEFF8', height: 80 },
-					headerTitle: '',
+					headerTitle: 'Almacén vidrios',
 					headerRight: () => (
 						<TouchableOpacity
 							onPress={() => navigation.navigate('Agregar vidrio')}

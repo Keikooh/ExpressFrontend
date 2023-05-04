@@ -5,7 +5,7 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Picker } from '@react-native-picker/picker';
 import Dialog from 'react-native-dialog';
 
@@ -13,7 +13,7 @@ import Dialog from 'react-native-dialog';
 import  Checkmark from '../assets/svg/Checkmark';
 
 import Layout from '../components/Layout';
-import { saveMaterial } from '../api';
+import { saveMaterial, getMaterial, updateMaterial } from '../api';
 
 const MaterialFormScreen = ({route, navigation}) => {
 	const [material, setmaterial] = useState({
@@ -26,35 +26,65 @@ const MaterialFormScreen = ({route, navigation}) => {
 		color: 'verde',
 	});
 	const [dialogVisibility, setdialogVisibility] = useState(false);
+	const [updating, setupdating] = useState(false)
 
 	const handleChange = (property, value) =>
 		setmaterial({ ...material, [property]: value });
 
-	const handleSubmit = () => {
-		saveMaterial(material)
-			.then(data => {
-				console.log(route.params);
-				route.params?.onSubmit?.();
-				navigation.navigate(route.params.prevScreenName);
-			})
-			.catch(error => {
-				console.error(error);
-			});
+	const handleSubmit = async () => {
+		try {
+			if(!updating){
+				await saveMaterial(material);
+			} else{
+				try {
+					await updateMaterial(route.params.id, material);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+		} catch (error) {
+			console.log(error)	
+		}
 	};
+
+	useEffect(() => {
+		if(route.params && route.params.id){
+			setupdating(true)
+			navigation.setOptions({headerTitle: `Actualizar ${route.params.prevScreenName === 'Aluminium stock' ? 'aluminio': 'vidrio'}`})
+		
+			const prueba = async () => {
+				const material = await getMaterial(route.params.id);
+				setmaterial(
+					{
+						type: material.type,
+						large: material.large,
+						width: material.width,
+						amount: material.amount,
+						cost: material.cost,
+						thickness: material.thickness,
+						color: material.color,
+					})
+			}; 
+			
+			prueba();
+		}
+	}, [])
+	
 
 	return (
 		<Layout>
 
 			<Dialog.Container visible={dialogVisibility}>
-				<View style={styles.icon}><Checkmark color='white' size={40}/></View>
-				<Text style={styles.text}>Material registrado correctamente</Text>
+				<View style={[styles.icon, {backgroundColor: !updating ? '#47D5A2' : '#FFA500'}]}><Checkmark color='white' size={40}/></View>
+				<Text style={styles.text}>Material {!updating ? 'registrado' : 'actualizado'} correctamente</Text>
 				<View style={styles.buttonsContainer}>
 				<Dialog.Button
-					style={styles.okButton}
+					style={[styles.okButton,{backgroundColor: !updating ? '#47D5A2' : '#FFA500'}]}
 					label='ok'
 					onPress={() => {
 						setdialogVisibility(false)
 						navigation.navigate(route.params.prevScreenName);
+						
 					}}
 				/>
 				</View>
@@ -66,13 +96,16 @@ const MaterialFormScreen = ({route, navigation}) => {
 					keyboardType='decimal-pad'
 					placeholderTextColor='#6E7582'
 					placeholder='Ancho'
-					onChangeText={text => handleChange('large', text)}
+					onChangeText={text => handleChange('width', text)}
+					value={material.width.toString()}
 				/>
 				<TextInput
 					style={styles.input}
 					keyboardType='decimal-pad'
 					placeholder='Largo'
-					onChangeText={text => handleChange('width', text)}
+					onChangeText={text => handleChange('large', text)}
+					value={material.large.toString()}
+					
 				/>
 			</View>
 			<View style={{ flexDirection: 'row' }}>
@@ -81,6 +114,7 @@ const MaterialFormScreen = ({route, navigation}) => {
 					keyboardType='decimal-pad'
 					placeholder='Grosor'
 					onChangeText={text => handleChange('thickness', text)}
+					value={material.thickness.toString()}
 				/>
 				<Picker
 					style={styles.input}
@@ -98,23 +132,26 @@ const MaterialFormScreen = ({route, navigation}) => {
 					keyboardType='numeric'
 					placeholder='Existencias'
 					onChangeText={text => handleChange('amount', text)}
+					value={material.amount.toString()}
 				/>
 				<TextInput
 					style={styles.input}
 					keyboardType='decimal-pad'
 					placeholder='Precio c/u'
 					onChangeText={text => handleChange('cost', text)}
+					value={material.cost.toString()}
 				/>
 			</View>
 
 			<View style={{ flexDirecion: 'row', alignSelf: 'center' }}>
 				<TouchableOpacity
 					onPress={()=>{
-						handleSubmit 
+						handleSubmit()
 						setdialogVisibility(true)
 					}} 
 					style={{
-						backgroundColor: '#414D9C',
+						backgroundColor: 
+							!updating ? '#414D9C' : '#FFA500',
 						marginTop: 50,
 						padding: 15,
 						width: 150,
@@ -129,7 +166,7 @@ const MaterialFormScreen = ({route, navigation}) => {
 							textAlign: 'center',
 						}}
 					>
-						guardar
+						{ !updating ? 'guardar' : 'actualizar'}
 					</Text>
 				</TouchableOpacity>
 			</View>
@@ -148,7 +185,6 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 	},
 	icon:{
-		backgroundColor:'#47D5A2',
 		width: 65,
 		height: 65,
 		borderRadius: 60,
@@ -165,7 +201,6 @@ const styles = StyleSheet.create({
 	okButton:{
 		marginTop: 20,
 		marginBottom: 20,
-		backgroundColor:'#47D5A2',
 		color: 'white',
 		borderRadius:16,
 		paddingHorizontal: 20,

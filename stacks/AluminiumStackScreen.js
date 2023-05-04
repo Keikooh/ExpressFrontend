@@ -14,7 +14,7 @@ const AluminiumStackScreen = () => {
 				component={AluminiumStockScreen}
 				options={({ navigation }) => ({
 					headerStyle: { backgroundColor: '#EBEFF8' },
-					headerTitle: '',
+					headerTitle: 'Almacén aluminios',
 					headerRight: () => (
 						<TouchableOpacity
 						onPress={() => navigation.navigate('Agregar aluminio', { onSubmit: () => navigation.navigate('Aluminium stock')})}
