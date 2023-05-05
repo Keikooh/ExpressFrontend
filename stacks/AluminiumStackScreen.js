@@ -1,9 +1,10 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AluminiumStockScreen from '../screens/AluminiumStockScreen';
 import MaterialFormScreen from '../screens/MaterialFormScreen';
 
+import Add from '../assets/svg/Add';
 const Stack = createNativeStackNavigator();
 
 const AluminiumStackScreen = () => {
@@ -17,9 +18,10 @@ const AluminiumStackScreen = () => {
 					headerTitle: 'Almacén aluminios',
 					headerRight: () => (
 						<TouchableOpacity
+						style={styles.addButton}
 						onPress={() => navigation.navigate('Agregar aluminio', { onSubmit: () => navigation.navigate('Aluminium stock')})}
 						>
-							<Text>Agregar</Text>
+							<Add color={'white'} size={25}/>
 						</TouchableOpacity>
 					),
 				})}
@@ -35,5 +37,14 @@ const AluminiumStackScreen = () => {
 		</Stack.Navigator>
 	);
 };
+
+const styles = StyleSheet.create({
+	addButton:{
+		backgroundColor: '#414D9C',
+		paddingHorizontal: 20,
+		paddingVertical: 3,
+		borderRadius: 16,
+	}
+});
 
 export default AluminiumStackScreen;

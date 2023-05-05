@@ -7,13 +7,10 @@ import { getMaterials, deleteMaterial } from '../api.js';
 const Material_List = ({ type }) => {
 	const [material, setmaterial] = useState([]);
 	const [refreshing, setrefreshing] = useState(false);
-	const [emptyData, setemptyData] = useState(false);
 
 	const loadMaterial = async () => {
 		const data = await getMaterials();
 		setmaterial(data);
-		//setemptyData(data.length === 0 ? true : false)
-		console.log(data.length);
 	};
 
 	useEffect(() => {
@@ -40,6 +37,7 @@ const Material_List = ({ type }) => {
 				refreshControl={
 					<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
 				}
+				ListEmptyComponent={<Text>No hay elementos</Text>}
 			/>
 		);
 	};
@@ -61,7 +59,7 @@ const Material_List = ({ type }) => {
 		setrefreshing(false);
 	});
 
-	return material.length > 0 ? Materials() : Empty();
+	return Materials();
 };
 
 export default Material_List;
